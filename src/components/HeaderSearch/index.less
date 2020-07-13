@@ -1,0 +1,31 @@
+@import '~antd/lib/style/themes/default.less';
+
+.headerSearch {
+  :global(.anticon-search) {
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .input {
+    width: 0;
+    background-color: transparent;
+    border-radius: 0;
+    transition: width 0.3s, margin-left 0.3s;
+
+    input {
+      padding-left: 0;
+      padding-right: 0;
+      border: 0;
+      box-shadow: none;
+    }
+
+    &, &:hover, &:focus {
+      border-bottom: 1px solid @border-color-base;
+    }
+
+    &.show {
+      width: 210px;
+      margin-left: 8px;
+    }
+  }
+}

@@ -1,0 +1,12 @@
+version: "3.7"
+
+services:
+  proxy-novel-platform-test:
+    image: nginx
+    restart: always
+    ports:
+      - "18080:80"
+    container_name: ${PROJECT_NAME}
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ../dist:/usr/share/nginx/html
