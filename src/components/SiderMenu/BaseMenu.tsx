@@ -141,16 +141,17 @@ const BaseMenu: React.FC<BaseMenuProps> = props => {
     return props;
   }, [openKeys, collapsed, mode, selectedKeys]);
 
-  const navMenuItems = useMemo(() => getNavMenuItems(matchedMenuData, forgetHistory, location.pathname), [
-    matchedMenuData,
-  ]);
+  const navMenuItems = useMemo(
+    () => getNavMenuItems(matchedMenuData, forgetHistory, location.pathname),
+    [matchedMenuData, location.pathname],
+  );
 
   return (
     <Menu
       {...menuProps}
       theme={theme}
       mode={mode}
-      onOpenChange={onOpenChange}
+      onOpenChange={onOpenChange as any}
       selectedKeys={selectedKeys}
       className={className}
     >
