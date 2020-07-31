@@ -1,4 +1,4 @@
-import axios from '@/utils/axios';
+import axiosInstance from '@/utils/axiosInstance';
 // import { history } from 'umi';
 import { setAuthority } from '@/utils/Authorized';
 import { IBaseResponse, IBackendUserItem } from '@/data';
@@ -9,7 +9,7 @@ export async function render(oldRender: Function) {
   try {
     const {
       data: { data },
-    } = await axios.get<IBaseResponse<IBackendUserItem>>('/whoami');
+    } = await axiosInstance.get<IBaseResponse<IBackendUserItem>>('/whoami');
     const authority = data.permission;
     switch (authority) {
       case 'admin':

@@ -4,7 +4,6 @@ import { notification } from 'antd';
 import qs from 'qs';
 // import { authorityKey, setAuthority } from './Authorized';
 
-
 const codeMessage: { [key: number]: string } = {
   200: '服务器成功返回请求的数据。',
   201: '新建或修改数据成功。',
@@ -49,13 +48,13 @@ const errorHandler = ({ response, config }: AxiosError): any => {
   }
 };
 
-const instance = axios.create({
+const axiosInstance = axios.create({
   baseURL: '/api/',
   timeout: 30000,
   // headers: {},
 });
 
-// instance.interceptors.request.use(config => {
+// axiosInstance.interceptors.request.use(config => {
 //   const key = localStorage.getItem(authorityKey);
 //   if (key) {
 //     config.headers['speech-novel-username'] = key;
@@ -63,11 +62,11 @@ const instance = axios.create({
 //   return config;
 // });
 
-instance.interceptors.response.use(response => {
+axiosInstance.interceptors.response.use(response => {
   // if (response.config.url && response.config.url.indexOf('/api/user/access/login') !== -1) {
   // localStorage.setItem(authorityKey, response.data.username);
   // }
   return response;
 }, errorHandler);
 
-export default instance;
+export default axiosInstance;

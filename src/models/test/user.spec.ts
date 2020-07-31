@@ -9,7 +9,6 @@ describe('测试 dva model 文件 user', () => {
     const saga = UserModel.effects.fetchCurrentUser;
     const action: IFetchCurrentUserAction = {
       type: 'user/fetchCurrentUser',
-      payload: undefined,
     };
     const generator = saga(action, { call, put } as any);
     generator.next();

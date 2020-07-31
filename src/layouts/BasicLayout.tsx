@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { useIntl, connect, getLocale } from 'umi';
-import { Layout, Spin } from 'antd';
+import { Layout } from 'antd';
 import { Dispatch } from 'redux';
 import { Helmet } from 'react-helmet';
 import { useMediaQuery } from 'react-responsive';
@@ -10,7 +10,7 @@ import { BreadcrumbNameMapType, ICurrentUser, IMenuDataItem, Route, RouterTypes 
 import RouteContext, { IRouteContext } from '@/components/RouteContext';
 import { ConnectState } from '@/models/connect';
 import defaultSettings from '@/defaultSettings';
-import { user as userActionTypes } from '@/actionTypes';
+import { FETCH_CURRENT_USER } from '@/actionTypes/user';
 import Header from './Header';
 import Footer from './Footer';
 import AppContext from '@/AppContext';
@@ -57,9 +57,7 @@ const BasicLayout: React.FC<BasicLayoutProps> = props => {
   }, [getLocale()]);
 
   useEffect(() => {
-    dispatch({
-      type: userActionTypes.FETCH_CURRENT_USER,
-    });
+    dispatch({ type: FETCH_CURRENT_USER });
   }, []);
 
   const getContext: () => IRouteContext = () => ({
@@ -88,6 +86,7 @@ const BasicLayout: React.FC<BasicLayoutProps> = props => {
         menuData={menuData}
         collapsed={collapsed}
         onCollapse={handleMenuCollapse}
+        siderWidth={200}
       />
       <Layout className={styles.layout}>
         <Header
@@ -99,9 +98,7 @@ const BasicLayout: React.FC<BasicLayoutProps> = props => {
           onCollapse={handleMenuCollapse}
           dispatch={dispatch}
         />
-        <Content className={styles.content}>
-          {children}
-        </Content>
+        <Content className={styles.content}>{children}</Content>
         <Footer />
       </Layout>
     </Layout>
@@ -130,10 +127,7 @@ const mapStateToProps = ({
   menu: menuModel,
   user,
   loading,
-}: ConnectState): Pick<
-  BasicLayoutProps,
-  'collapsed' | 'menuData' | 'breadcrumbNameMap' | 'currentUser'
-> => ({
+}: ConnectState): Pick<BasicLayoutProps, 'collapsed' | 'menuData' | 'breadcrumbNameMap' | 'currentUser'> => ({
   collapsed: global.collapsed,
   menuData: menuModel.menuData,
   breadcrumbNameMap: menuModel.breadcrumbNameMap,
