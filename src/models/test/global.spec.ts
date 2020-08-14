@@ -1,13 +1,13 @@
 import GlobalModel from '../global';
 
-describe('测试 dva model 文件 global', () => {
+describe('测试 Dva Reducer changeLayoutCollapsed - 展开/收起侧边菜单', () => {
+  const initState = { collapsed: true, voices: [], emotions: [] };
+
   it('changeLayoutCollapsed -> 使 collapsed 变为 false', () => {
-    // expect('12345').toBe('12345');
-    expect(
-      GlobalModel.reducers.changeLayoutCollapsed(
-        { collapsed: true },
-        { type: 'changeLayoutCollapsed', payload: false },
-      ),
-    ).toEqual({ collapsed: false });
+    const action = { type: 'changeLayoutCollapsed', payload: false };
+    expect(GlobalModel.reducers.changeLayoutCollapsed(initState, action)).toEqual({
+      ...initState,
+      collapsed: false,
+    });
   });
 });

@@ -17,6 +17,4 @@ export interface IBackendUserItem {
   username: string;
   picture: string;
   email: string;
-  permission: PermissionType;
-  create_time: number; // 上次登陆时间
 }
