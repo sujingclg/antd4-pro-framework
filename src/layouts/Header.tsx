@@ -10,7 +10,7 @@ interface HeaderViewProps extends Partial<GlobalHeaderProps>, DispatchProp {
   isMobile: boolean;
 }
 
-const HeaderView: React.FC<HeaderViewProps> = props => {
+const HeaderView: React.FC<HeaderViewProps> = (props) => {
   const { isTopMenu, isMobile, onCollapse, dispatch, ...restProps } = props;
 
   const handleLogout = () => {

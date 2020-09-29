@@ -1,13 +1,13 @@
-import React, { Fragment, memo } from 'react';
+import React, { memo } from 'react';
 import { Layout } from 'antd';
-import { CopyrightCircleOutlined } from '@ant-design/icons';
-import { useIntl } from 'umi';
+// import { CopyrightCircleOutlined } from '@ant-design/icons';
+// import { useIntl } from 'umi';
 import GlobalFooter from '@/components/GlobalFooter';
 
 const { Footer } = Layout;
 
-const FooterView: React.FC<{}> = memo(props => {
-  const intl = useIntl();
+const FooterView: React.FC<{}> = (props) => {
+  // const intl = useIntl();
   return (
     <Footer>
       <GlobalFooter
@@ -20,13 +20,14 @@ const FooterView: React.FC<{}> = memo(props => {
       //   },
       // ]}
       // copyright={
-      //   <Fragment>
-      //     <CopyrightCircleOutlined/> {intl.formatMessage({ id: 'component.globalFooter.copyright' })}
-      //   </Fragment>
+      //   <>
+      //     <CopyrightCircleOutlined />{' '}
+      //     {intl.formatMessage({ id: 'component.globalFooter.copyright' })}
+      //   </>
       // }
       />
     </Footer>
   );
-});
+};
 
-export default FooterView;
+export default memo(FooterView);

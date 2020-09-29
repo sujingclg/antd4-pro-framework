@@ -27,6 +27,7 @@ const errorHandler = ({ response, config }: AxiosError): any => {
     const statusCode = response.status;
     const errorText = codeMessage[statusCode] || response.statusText;
     if (statusCode === 401) {
+      return;
     }
     notification.error({
       message: `请求错误 ${statusCode}: ${config.baseURL?.replace(/\/$/, '')}${config.url}`,
@@ -40,7 +41,8 @@ const errorHandler = ({ response, config }: AxiosError): any => {
       history.push('/exception/403');
     }
     return Promise.reject(response.data);
-  } else if (!response) {
+  }
+  if (!response) {
     notification.error({
       description: '您的网络发生异常，无法连接服务器',
       message: '网络异常',
@@ -62,7 +64,7 @@ const axiosInstance = axios.create({
 //   return config;
 // });
 
-axiosInstance.interceptors.response.use(response => {
+axiosInstance.interceptors.response.use((response) => {
   // if (response.config.url && response.config.url.indexOf('/api/user/access/login') !== -1) {
   // localStorage.setItem(authorityKey, response.data.username);
   // }

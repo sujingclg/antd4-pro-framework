@@ -5,8 +5,8 @@ import Authorized from '@/utils/Authorized';
 import { ConnectState, IUserModelState } from '@/models/connect';
 
 function getRouteAuthority(path: string, routeData: IRoute[]): string[] | string | undefined {
-  let authorities: string[] | string | undefined = undefined;
-  routeData.forEach(route => {
+  let authorities: string[] | string | undefined;
+  routeData.forEach((route) => {
     if (pathToRegexp(`${route.path}(.*)`).test(path)) {
       authorities = route.authority || authorities;
       if (route.routes) {
@@ -21,7 +21,7 @@ interface AuthComponentProps extends ConnectProps {
   user: IUserModelState;
 }
 
-const AuthComponent: React.FC<AuthComponentProps> = props => {
+const AuthComponent: React.FC<AuthComponentProps> = (props) => {
   const { location, route = { routes: [] }, user, children } = props;
 
   const { currentUser } = user;

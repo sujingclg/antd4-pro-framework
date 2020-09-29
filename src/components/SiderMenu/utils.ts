@@ -39,7 +39,7 @@ import { IMenuDataItem } from '../typings';
  */
 export function getFlatMenuKeys(menuData: IMenuDataItem[] = []): string[] {
   let keys: string[] = [];
-  menuData.forEach(item => {
+  menuData.forEach((item) => {
     keys.push(item.path);
     if (item.children) {
       keys = keys.concat(getFlatMenuKeys(item.children));
@@ -63,7 +63,7 @@ export function getFlatMenuKeys(menuData: IMenuDataItem[] = []): string[] {
 export function getMenuMatches(flatMenuKeys: string[], path: string): string[] {
   // pathToRegexp 用于匹配静态或动态路由, 传入 /path/:id 返回正则表达式
   // test方法为 JavaScript 的正则表达式对象的内建方法, 用于检测一个字符串是否匹配某个模式
-  return flatMenuKeys.filter(item => {
+  return flatMenuKeys.filter((item) => {
     if (item) {
       return pathToRegexp(item).test(path);
     }
@@ -81,11 +81,14 @@ export function getMenuMatches(flatMenuKeys: string[], path: string): string[] {
 export function getDefaultCollapsedSubMenus(pathname: string, flatMenuKeys: string[]): string[] {
   // 获取与当前导航标签一致的传入 menusData 的路径
   return urlToList(pathname)
-    .map(item => getMenuMatches(flatMenuKeys, item)[0])
-    .filter(item => item);
+    .map((item) => getMenuMatches(flatMenuKeys, item)[0])
+    .filter((item) => item);
 }
 
-export function getMatchedMenuData(menuData: IMenuDataItem[], match: RouteComponentProps['match']): IMenuDataItem[] {
+export function getMatchedMenuData(
+  menuData: IMenuDataItem[],
+  match: RouteComponentProps['match'],
+): IMenuDataItem[] {
   const matchedMenuData = find(menuData, { path: match.path });
   return matchedMenuData && matchedMenuData.children ? matchedMenuData.children : menuData;
 }

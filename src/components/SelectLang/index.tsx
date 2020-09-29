@@ -6,7 +6,7 @@ import { useIntl, getLocale, setLocale } from 'umi';
 import HeaderDropdown from '../HeaderDropdown';
 import styles from './index.less';
 
-const changeLang = ({ key }: { key: string }) => {
+const changeLang = ({ key }: any) => {
   setLocale(key, false);
 };
 
@@ -28,17 +28,13 @@ interface SelectLangProps {
   style?: React.CSSProperties;
 }
 
-const SelectLang: React.FC<SelectLangProps> = props => {
+const SelectLang: React.FC<SelectLangProps> = (props) => {
   const { className } = props;
   const intl = useIntl();
   const selectedLang = getLocale();
   const langMenu = (
-    <Menu
-      className={styles.menu}
-      selectedKeys={[selectedLang]}
-      onClick={changeLang}
-    >
-      {locales.map(locale => (
+    <Menu className={styles.menu} selectedKeys={[selectedLang]} onClick={changeLang}>
+      {locales.map((locale) => (
         <Menu.Item key={locale.key}>
           <span role="img" aria-label={locale.label}>
             {locale.icon}

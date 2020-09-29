@@ -2,7 +2,7 @@ import React from 'react';
 
 interface HomePageProps {}
 
-const HomePage: React.FC<HomePageProps> = props => {
+const HomePage: React.FC<HomePageProps> = (props) => {
   return (
     <div>
       <p>Home</p>

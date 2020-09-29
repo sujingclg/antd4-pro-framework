@@ -3,10 +3,10 @@ import * as H from 'history';
 import { BreadcrumbProps as AntdBreadcrumbProps } from 'antd/lib/breadcrumb';
 import { Link } from 'umi';
 import pathToRegexp from 'path-to-regexp';
-import { BreadcrumbNameMapType, IMenuDataItem } from '../typings';
-import { urlToList } from './pathTools';
 import Authorized from '@/utils/Authorized';
 import defaultSettings from '@/defaultSettings';
+import { BreadcrumbNameMapType, IMenuDataItem } from '../typings';
+import { urlToList } from './pathTools';
 
 export interface CustomBreadcrumbProps {
   location?: H.Location | { pathname: string };
@@ -29,7 +29,9 @@ const itemRender: AntdBreadcrumbProps['itemRender'] = (route, params, routes, pa
 
 function renderItemLocal(item: IMenuDataItem, formatMessage: Function): string {
   if (item.locale) {
-    return defaultSettings.menu.locale ? formatMessage({ id: item.locale, defaultMessage: item.name }) : item.name;
+    return defaultSettings.menu.locale
+      ? formatMessage({ id: item.locale, defaultMessage: item.name })
+      : item.name;
   }
   return item.name;
 }
@@ -40,7 +42,7 @@ function getMenuDataItem(breadcrumbNameMap: BreadcrumbNameMapType, url: string):
   }
   let menuDataItem = breadcrumbNameMap[url];
   if (!menuDataItem) {
-    Object.keys(breadcrumbNameMap).forEach(item => {
+    Object.keys(breadcrumbNameMap).forEach((item) => {
       if (pathToRegexp(item).test(url)) {
         menuDataItem = breadcrumbNameMap[item];
       }
@@ -60,7 +62,7 @@ function conversionFromLocation(
   // 将当前页面的路径转换为层级目录的列表
   const pathSnippets = urlToList(routerLocation.pathname);
   const breadcrumbRoutes: AntdBreadcrumbProps['routes'] = pathSnippets
-    .map(url => {
+    .map((url) => {
       const currentMenuDataItem = getMenuDataItem(breadcrumbNameMap, url);
 
       if (!currentMenuDataItem || currentMenuDataItem.inherited) {
@@ -77,7 +79,7 @@ function conversionFromLocation(
         ? { path: url, breadcrumbName: name, children }
         : { path: '', breadcrumbName: '' };
     })
-    .filter(item => Boolean(item && item.path));
+    .filter((item) => Boolean(item && item.path));
   return breadcrumbRoutes;
 }
 

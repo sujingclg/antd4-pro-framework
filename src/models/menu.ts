@@ -43,16 +43,11 @@ const MenuModel: IMenuModel = {
 
   reducers: {
     save(state, { payload }) {
-      return {
-        ...state,
-        ...payload,
-      };
+      return { ...state, ...payload };
     },
 
     changeHideInMenu(state, { payload }) {
-      return {
-        ...state!,
-      };
+      return { ...state! };
     },
   },
 };

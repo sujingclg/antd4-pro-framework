@@ -37,11 +37,16 @@ class SiderMenu extends React.PureComponent<SiderMenuProps, SiderMenuState> {
     super(props);
     const { location } = props;
     this.state = {
-      openKeys: location ? getDefaultCollapsedSubMenus(location.pathname, getFlatMenuKeys(props.menuData)) : [],
+      openKeys: location
+        ? getDefaultCollapsedSubMenus(location.pathname, getFlatMenuKeys(props.menuData))
+        : [],
     };
   }
 
-  static getDerivedStateFromProps(nextProps: SiderMenuProps, prevState: SiderMenuState): SiderMenuState | null {
+  static getDerivedStateFromProps(
+    nextProps: SiderMenuProps,
+    prevState: SiderMenuState,
+  ): SiderMenuState | null {
     const { pathname: statePathname } = prevState;
     const { location = { pathname: '/' }, menuData, openKeysMoreThanOne } = nextProps;
     if (!openKeysMoreThanOne && location.pathname !== statePathname) {
@@ -53,9 +58,9 @@ class SiderMenu extends React.PureComponent<SiderMenuProps, SiderMenuState> {
     return null;
   }
 
-  isMainMenu: (key: string) => boolean = key => {
+  isMainMenu: (key: string) => boolean = (key) => {
     const { menuData = [] } = this.props;
-    return menuData.some(item => {
+    return menuData.some((item) => {
       if (key) {
         return item.path === key;
       }
@@ -63,14 +68,14 @@ class SiderMenu extends React.PureComponent<SiderMenuProps, SiderMenuState> {
     });
   };
 
-  handleOpenChange: (openKeys: string[]) => void = openKeys => {
+  handleOpenChange: (openKeys: string[]) => void = (openKeys) => {
     if (this.props.openKeysMoreThanOne) {
       this.setState({
         openKeys: [...openKeys], // 正常模式
       });
     } else {
       const lastOpenKey = openKeys[openKeys.length - 1];
-      const moreThanOne = openKeys.filter(openKey => this.isMainMenu(openKey)).length > 1;
+      const moreThanOne = openKeys.filter((openKey) => this.isMainMenu(openKey)).length > 1;
       this.setState({
         openKeys: moreThanOne ? [lastOpenKey] : [...openKeys], // 手风琴模式
       });
@@ -78,7 +83,16 @@ class SiderMenu extends React.PureComponent<SiderMenuProps, SiderMenuState> {
   };
 
   render(): React.ReactNode {
-    const { theme, siderWidth, logo, title, collapsed, onCollapse, isMobile, globalSiderMenu } = this.props;
+    const {
+      theme,
+      siderWidth,
+      logo,
+      title,
+      collapsed,
+      onCollapse,
+      isMobile,
+      globalSiderMenu,
+    } = this.props;
 
     // eslint-disable-next-line no-shadow
     const handleCollapse = (collapsed: boolean) => {

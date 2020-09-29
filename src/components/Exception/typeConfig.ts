@@ -1,5 +1,4 @@
-// const cdn = '';
-const cdn = 'https://s3.pstatp.com/toutiao/lab-speech/novel';
+const cdn = '';
 
 const typeConfig = {
   403: {

@@ -6,15 +6,21 @@ import { Helmet } from 'react-helmet';
 import { useMediaQuery } from 'react-responsive';
 import getPageTitle from '@/utils/getPageTitle';
 import SiderMenu from '@/components/SiderMenu';
-import { BreadcrumbNameMapType, ICurrentUser, IMenuDataItem, Route, RouterTypes } from '@/components/typings';
+import {
+  BreadcrumbNameMapType,
+  ICurrentUser,
+  IMenuDataItem,
+  Route,
+  RouterTypes,
+} from '@/components/typings';
 import RouteContext, { IRouteContext } from '@/components/RouteContext';
 import { ConnectState } from '@/models/connect';
 import defaultSettings from '@/defaultSettings';
 import { FETCH_CURRENT_USER } from '@/actionTypes/user';
-import Header from './Header';
-import Footer from './Footer';
 import AppContext from '@/AppContext';
 import logo from '@/assets/logo.png';
+import Header from './Header';
+import Footer from './Footer';
 import styles from './BasicLayout.less';
 
 const { Content } = Layout;
@@ -27,7 +33,7 @@ export interface BasicLayoutProps extends RouterTypes<Route> {
   dispatch: Dispatch;
 }
 
-const BasicLayout: React.FC<BasicLayoutProps> = props => {
+const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
   const {
     collapsed,
     menuData,
@@ -108,14 +114,16 @@ const BasicLayout: React.FC<BasicLayoutProps> = props => {
     <Fragment>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>{getPageTitle(location!.pathname, breadcrumbNameMap)}</title>
+        <title>{getPageTitle(location!.pathname, breadcrumbNameMap, intl.formatMessage)}</title>
         <link
           rel="shortcut icon"
           href="//sf1-ttcdn-tos.pstatp.com/obj/ttfe/2020-01-06/lab-speech/static/favicon.ico"
           type="image/x-icon"
         />
       </Helmet>
-      <RouteContext.Provider value={{ ...getContext(), CSSLayoutType: isTopMenu ? 'Fixed' : 'Fluid' }}>
+      <RouteContext.Provider
+        value={{ ...getContext(), CSSLayoutType: isTopMenu ? 'Fixed' : 'Fluid' }}
+      >
         <AppContext.Provider value={{}}>{layout}</AppContext.Provider>
       </RouteContext.Provider>
     </Fragment>
@@ -126,8 +134,10 @@ const mapStateToProps = ({
   global,
   menu: menuModel,
   user,
-  loading,
-}: ConnectState): Pick<BasicLayoutProps, 'collapsed' | 'menuData' | 'breadcrumbNameMap' | 'currentUser'> => ({
+}: ConnectState): Pick<
+  BasicLayoutProps,
+  'collapsed' | 'menuData' | 'breadcrumbNameMap' | 'currentUser'
+> => ({
   collapsed: global.collapsed,
   menuData: menuModel.menuData,
   breadcrumbNameMap: menuModel.breadcrumbNameMap,

@@ -15,7 +15,7 @@ export interface RightContentProps extends Partial<AvatarDropdownProps> {
   helpHref?: string;
 }
 
-const RightContent: React.FC<RightContentProps> = props => {
+const RightContent: React.FC<RightContentProps> = (props) => {
   const { theme, helpHref, currentUser, onLogout } = props;
   const intl = useIntl();
   return (
@@ -23,7 +23,12 @@ const RightContent: React.FC<RightContentProps> = props => {
       <HeaderSearch className={classNames(styles.action, styles.search)} />
       {helpHref && isUrl(helpHref) && (
         <Tooltip title={intl.formatMessage({ id: 'component.globalHeader.help' })}>
-          <a target="_blank" rel="noopener noreferrer help" href={helpHref} className={styles.action}>
+          <a
+            target="_blank"
+            rel="noopener noreferrer help"
+            href={helpHref}
+            className={styles.action}
+          >
             <QuestionCircleOutlined />
           </a>
         </Tooltip>

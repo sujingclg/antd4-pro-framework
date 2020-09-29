@@ -5,6 +5,6 @@
  */
 export function urlToList(url: string): string[] {
   if (url === '/') return ['/'];
-  const urlList = url.split('/').filter(i => i); // 去除空字符，即去除路径中有两个连续斜杠的元素
+  const urlList = url.split('/').filter((i) => i); // 去除空字符，即去除路径中有两个连续斜杠的元素
   return urlList.map((urlItem, index) => `/${urlList.slice(0, index + 1).join('/')}`);
 }

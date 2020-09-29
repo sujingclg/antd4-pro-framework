@@ -26,13 +26,15 @@ function formatter(props: FormatterProps): IMenuDataItem[] {
   return routeData
     .map((item) => {
       if (!item.name || !item.path) return null;
-      let locale = 'menu';
+      let locale: string;
       if (parentName && parentName !== '/') {
         locale = `${parentName}.${item.name}`; // 递归调用时将进行串联, 从而形成一个以'/'分隔的路径
       } else {
         locale = `menu.${item.name}`; // 专门为Home页执行
       }
-      const name = defaultSettings.menu.locale ? formatMessage({ id: locale, defaultMessage: item.name }) : item.name;
+      const name = defaultSettings.menu.locale
+        ? formatMessage({ id: locale, defaultMessage: item.name })
+        : item.name;
       const result: Route = {
         ...item,
         name,

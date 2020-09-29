@@ -4,9 +4,9 @@ import { Dropdown } from 'antd';
 import { DropDownProps } from 'antd/lib/dropdown';
 import styles from './index.less';
 
-interface HeaderDropdownProps extends DropDownProps{}
+interface HeaderDropdownProps extends DropDownProps {}
 
-const HeaderDropdown: React.FC<HeaderDropdownProps> = props => {
+const HeaderDropdown: React.FC<HeaderDropdownProps> = (props) => {
   const { overlayClassName, ...restProps } = props;
   return (
     <Dropdown
@@ -14,7 +14,7 @@ const HeaderDropdown: React.FC<HeaderDropdownProps> = props => {
       placement="bottomRight"
       overlayClassName={classNames(styles.container, overlayClassName)}
     />
-  )
+  );
 };
 
 export default HeaderDropdown;

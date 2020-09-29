@@ -1,17 +1,17 @@
 import React, { useMemo, useReducer } from 'react';
 import { Card, Steps } from 'antd';
+import PageHeaderWrapper from '@/components/PageHeaderWrapper';
 import { stepsReducer, initialState } from './reducer';
 import Step0 from './Step0';
 import StepConfirm from './StepConfirm';
 import StepResult from './StepResult';
 import styles from './index.less';
-import PageHeaderWrapper from '@/components/PageHeaderWrapper';
 
 const { Step } = Steps;
 
 interface StepFormProps {}
 
-const StepForm: React.FC<StepFormProps> = props => {
+const StepForm: React.FC<StepFormProps> = (props) => {
   const [stepsState, stepsDispatch] = useReducer(stepsReducer, initialState);
 
   const { pageIndex, stepComponent } = useMemo(() => {

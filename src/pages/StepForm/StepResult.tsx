@@ -11,7 +11,7 @@ interface StepResultProps {
   stepsDispatch: Dispatch<Action>;
 }
 
-const StepResult: React.FC<StepResultProps> = props => {
+const StepResult: React.FC<StepResultProps> = (props) => {
   const { stepsState, stepsDispatch } = props;
 
   const handleFinish = () => {
@@ -40,8 +40,8 @@ const StepResult: React.FC<StepResultProps> = props => {
           <a>Thaw immediately &gt;</a>
         </Paragraph>
         <Paragraph>
-          <CloseCircleOutlined className={styles.errorIcon} /> &nbsp; Your account is not yet eligible to apply{' '}
-          <a>Apply Unlock &gt;</a>
+          <CloseCircleOutlined className={styles.errorIcon} /> &nbsp; Your account is not yet
+          eligible to apply <a>Apply Unlock &gt;</a>
         </Paragraph>
       </div>
     </Result>

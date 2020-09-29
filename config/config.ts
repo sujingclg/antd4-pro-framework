@@ -16,8 +16,8 @@ export default defineConfig({
 
   hash: true,
   // theme: {
-  //   '@primary-color': '#38ACC1'
+  //   '@primary-color': '#38ACC1',
   // },
-  // base: '/novel',
-  // publicPath: '//s3.pstatp.com/toutiao/lab-speech/novel/',
+  // base: '/',
+  // publicPath: '//sf6-scmcdn-tos.pstatp.com/goofy/lab-speech/console/',
 });

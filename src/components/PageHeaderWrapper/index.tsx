@@ -11,7 +11,7 @@ import styles from './index.less';
 const { Title } = Typography;
 const { TabPane } = Tabs;
 
-export interface PageHeaderWrapperProps<T> {
+export interface PageHeaderWrapperProps<T = any> {
   title?: WithFalse<React.ReactNode>;
   content?: React.ReactNode;
   extraContent?: React.ReactNode;
@@ -29,7 +29,7 @@ export interface PageHeaderWrapperProps<T> {
   tabBarExtraContent?: React.ReactNode;
 }
 
-const PageHeaderWrapper: React.FC<PageHeaderWrapperProps<any>> = props => {
+const PageHeaderWrapper: React.FC<PageHeaderWrapperProps> = (props) => {
   const {
     title,
     content,
@@ -62,10 +62,10 @@ const PageHeaderWrapper: React.FC<PageHeaderWrapperProps<any>> = props => {
     tabList && tabList.length ? (
       <Tabs
         activeKey={activeTabKey}
-        onChange={key => onTabChange && onTabChange(key)}
+        onChange={(key) => onTabChange && onTabChange(key)}
         tabBarExtraContent={tabBarExtraContent}
       >
-        {tabList.map(item => (
+        {tabList.map((item) => (
           <TabPane tab={item.tab} key={item.key} disabled={item.disabled} />
         ))}
       </Tabs>
@@ -82,10 +82,14 @@ const PageHeaderWrapper: React.FC<PageHeaderWrapperProps<any>> = props => {
 
     return (
       <RouteContext.Consumer>
-        {value => (
+        {(value) => (
           <PageHeader
             title={titleComponent}
-            breadcrumb={hiddenBreadcrumb ? undefined : getBreadcrumbProps(value, extraBreadcrumb, intl.formatMessage)}
+            breadcrumb={
+              hiddenBreadcrumb
+                ? undefined
+                : getBreadcrumbProps(value, extraBreadcrumb, intl.formatMessage)
+            }
             {...restProps}
             footer={renderFooter()}
           >

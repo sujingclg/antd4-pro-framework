@@ -13,7 +13,7 @@ interface ResultProps {
   style?: React.CSSProperties;
 }
 
-const Result: React.FC<ResultProps> = props => {
+const Result: React.FC<ResultProps> = (props) => {
   const { type, title, description, extra, actions, className, style } = props;
 
   const iconMap = {

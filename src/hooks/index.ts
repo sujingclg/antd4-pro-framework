@@ -8,9 +8,4 @@ const Hooks = {
   useSearchUsers,
 };
 
-export {
-  Hooks as default,
-  useResetFormOnCloseModal,
-  useStateWithCallback,
-  useSearchUsers,
-};
+export { Hooks as default, useResetFormOnCloseModal, useStateWithCallback, useSearchUsers };

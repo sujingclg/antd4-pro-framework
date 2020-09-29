@@ -8,7 +8,6 @@ type RouterConfigType = {
   name?: string;
   icon?: keyof typeof menuIconMap;
   component?: string;
-  Routes?: string[];
   authority?: string[];
   locale?: boolean;
   hideInMenu?: boolean;

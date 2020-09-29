@@ -2,6 +2,15 @@ import { AnyAction } from 'redux';
 import { EffectsCommandMap } from 'dva';
 import * as user from './user';
 
+/**
+ * Dva Effect 执行后的返回值接口(如果有的话)
+ */
+export interface IDispatchReturn {
+  succeeded: boolean;
+  message?: string;
+  id?: string;
+}
+
 export type Effect<A = AnyAction, TReturn = any, TNext = unknown> = (
   action: A,
   effects: EffectsCommandMap,

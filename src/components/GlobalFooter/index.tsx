@@ -15,19 +15,15 @@ export interface GlobalFooterProps {
   links?: LinkType[];
 }
 
-const GlobalFooter: React.FC<GlobalFooterProps> = props => {
+const GlobalFooter: React.FC<GlobalFooterProps> = (props) => {
   const { className, copyright, links } = props;
   const clsString = classNames(styles.globalFooter, className);
   return (
     <footer className={clsString}>
       {links && (
         <div className={styles.links}>
-          {links.map(link => (
-            <a
-              key={link.key}
-              target={link.isBlankTarget ? '_blank' : '_self'}
-              href={link.href}
-            >
+          {links.map((link) => (
+            <a key={link.key} target={link.isBlankTarget ? '_blank' : '_self'} href={link.href}>
               {link.title}
             </a>
           ))}

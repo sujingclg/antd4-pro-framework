@@ -24,10 +24,7 @@ const GlobalModel: IGlobalModel = {
 
   reducers: {
     changeLayoutCollapsed(state, { payload }) {
-      return {
-        ...state,
-        collapsed: payload,
-      };
+      return { ...state, collapsed: payload };
     },
   },
 };

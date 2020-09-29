@@ -1,10 +1,13 @@
-import { useEffect, useState, useCallback, Dispatch, SetStateAction } from 'react';
+import { useEffect, useState, Dispatch, SetStateAction } from 'react';
 
 /**
  *
  */
 interface UseStateWithCallbackFunc {
-  <T>(initValue?: T, callback?: (value?: T) => void): [T | undefined, Dispatch<SetStateAction<T | undefined>>];
+  <T>(initValue?: T, callback?: (value?: T) => void): [
+    T | undefined,
+    Dispatch<SetStateAction<T | undefined>>,
+  ];
 }
 
 const useStateWithCallback: UseStateWithCallbackFunc = (initValue, callback) => {

@@ -14,7 +14,7 @@ interface Step0Props {
   stepsDispatch: Dispatch<Action>;
 }
 
-const Step0: React.FC<Step0Props> = props => {
+const Step0: React.FC<Step0Props> = (props) => {
   const { stepsState, stepsDispatch } = props;
 
   const handleFinish = (values: any) => {
@@ -33,7 +33,11 @@ const Step0: React.FC<Step0Props> = props => {
       <FormItem label="名称" name="name" rules={[{ required: true, message: '请输入名称' }]}>
         <Input allowClear />
       </FormItem>
-      <FormItem label="项目名称" name="projectName" rules={[{ required: true, message: '请输入项目名称' }]}>
+      <FormItem
+        label="项目名称"
+        name="projectName"
+        rules={[{ required: true, message: '请输入项目名称' }]}
+      >
         <Input allowClear />
       </FormItem>
       <FormItem

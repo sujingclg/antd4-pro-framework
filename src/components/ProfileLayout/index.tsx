@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect, RefObject, useRef } from 'react';
+import React, { useState, useEffect, RefObject, useRef } from 'react';
 import { Menu } from 'antd';
 import { findIndex, flatMap } from 'lodash-es';
 import styles from './index.less';
@@ -16,15 +16,15 @@ export interface ProfileLayoutProps {
   showTitle?: boolean;
 }
 
-const ProfileLayout: React.FC<ProfileLayoutProps> = props => {
+const ProfileLayout: React.FC<ProfileLayoutProps> = (props) => {
   const { layoutData, isOpenKeysMoreThanOne = true, showTitle } = props;
-  const flatLayoutData = flatMap(layoutData, item => (item.children ? item.children : item));
+  const flatLayoutData = flatMap(layoutData, (item) => (item.children ? item.children : item));
   const [selectedMenuKey, setSelectedMenuKey] = useState<string>(flatLayoutData[0].key);
   const [openKeys, setOpenKeys] = useState<string[]>([layoutData[0].key]);
   const [menuMode, setMenuMode] = useState<'inline' | 'horizontal'>('inline');
   const rootRef: RefObject<HTMLDivElement> = useRef(null);
 
-  const handleOpenChange: (antOpenKeys: string[]) => void = antOpenKeys => {
+  const handleOpenChange: (antOpenKeys: string[]) => void = (antOpenKeys) => {
     if (isOpenKeysMoreThanOne) {
       setOpenKeys(antOpenKeys);
     } else {
@@ -59,7 +59,7 @@ const ProfileLayout: React.FC<ProfileLayoutProps> = props => {
     };
   }, []);
 
-  const getSubMenuOrItem: (item: ILayoutDataItem) => React.ReactNode = item => {
+  const getSubMenuOrItem: (item: ILayoutDataItem) => React.ReactNode = (item) => {
     if (Array.isArray(item.children)) {
       if (item.children.length === 0) {
         return null;
@@ -75,19 +75,19 @@ const ProfileLayout: React.FC<ProfileLayoutProps> = props => {
     return <Menu.Item key={item.key}>{item.title}</Menu.Item>;
   };
 
-  const getMenuItems: (parentItem: ILayoutDataItem[]) => React.ReactNode[] = parentItem =>
+  const getMenuItems: (parentItem: ILayoutDataItem[]) => React.ReactNode[] = (parentItem) =>
     parentItem
-      .filter(item => item.content || item.children)
-      .map(item => getSubMenuOrItem(item))
-      .filter(item => item);
+      .filter((item) => item.content || item.children)
+      .map((item) => getSubMenuOrItem(item))
+      .filter((item) => item);
 
   const renderMenu = () => (
     <Menu
       openKeys={openKeys}
       mode={menuMode}
       selectedKeys={[selectedMenuKey]}
-      onClick={({ key }) => setSelectedMenuKey(key)}
-      onOpenChange={handleOpenChange}
+      onClick={({ key }) => setSelectedMenuKey(key as string)}
+      onOpenChange={handleOpenChange as any}
     >
       {getMenuItems(layoutData)}
     </Menu>
@@ -96,10 +96,10 @@ const ProfileLayout: React.FC<ProfileLayoutProps> = props => {
   const renderContent = () => {
     const index = findIndex(flatLayoutData, { key: selectedMenuKey });
     return index !== -1 ? (
-      <Fragment>
+      <>
         {showTitle && <div className={styles.title}>{flatLayoutData[index].title}</div>}
         {flatLayoutData[index].content}
-      </Fragment>
+      </>
     ) : null;
   };
 

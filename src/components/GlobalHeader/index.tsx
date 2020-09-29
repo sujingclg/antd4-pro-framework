@@ -12,7 +12,7 @@ export interface GlobalHeaderProps extends Partial<RightContentProps> {
   extraContent?: React.ReactNode;
 }
 
-const GlobalHeader: React.FC<GlobalHeaderProps> = props => {
+const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
   const { collapsed, isMobile, logo, extraContent, onCollapse, ...restProps } = props;
   const toggle = () => {
     if (onCollapse) {
@@ -23,7 +23,7 @@ const GlobalHeader: React.FC<GlobalHeaderProps> = props => {
     <div className={styles.header}>
       {isMobile && (
         <Link to="/" className={styles.logo} key="logo">
-          <img src={logo} alt="logo" width="32"/>
+          <img src={logo} alt="logo" width="32" />
         </Link>
       )}
       <span className={styles.trigger} onClick={toggle}>
@@ -32,7 +32,7 @@ const GlobalHeader: React.FC<GlobalHeaderProps> = props => {
       {extraContent}
       <RightContent {...restProps} />
     </div>
-  )
+  );
 };
 
 export default memo(GlobalHeader);

@@ -1,10 +1,8 @@
 import React, { createContext } from 'react';
 
-export interface IAppContext {
-}
+export interface IAppContext {}
 
-const AppContext: React.Context<IAppContext> = createContext<IAppContext>({
-});
+const AppContext: React.Context<IAppContext> = createContext<IAppContext>({});
 
 AppContext.displayName = 'AppContext';
 

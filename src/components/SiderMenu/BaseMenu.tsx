@@ -6,9 +6,9 @@ import { Link } from 'umi';
 import { urlToList } from '@/components/utils/pathTools';
 import { isUrl } from '@/components/utils/utils';
 import { IMenuDataItem, Route, RouterTypes } from '@/components/typings';
-import { getFlatMenuKeys, getMatchedMenuData, getMenuMatches } from './utils';
 import defaultSettings from '@/defaultSettings';
 import menuIconMap from '@/menuIconMap';
+import { getFlatMenuKeys, getMatchedMenuData, getMenuMatches } from './utils';
 
 const { SubMenu } = Menu;
 
@@ -34,7 +34,11 @@ const conversionPath = (path: string): string => {
   return `/${path || ''}`.replace(/\/+/g, '/'); // 将path中全部的双斜杠 '//' 替换为单斜杠 '/'
 };
 
-const getMenuItemPath = (item: IMenuDataItem, forgetHistory: boolean, pathname: string): React.ReactNode => {
+const getMenuItemPath = (
+  item: IMenuDataItem,
+  forgetHistory: boolean,
+  pathname: string,
+): React.ReactNode => {
   const itemPath = conversionPath(item.path);
   const icon = getIcon(item.icon);
   const { target } = item;
@@ -56,12 +60,17 @@ const getMenuItemPath = (item: IMenuDataItem, forgetHistory: boolean, pathname: 
   );
 };
 
-const getSubMenuOrItem = (item: IMenuDataItem, forgetHistory: boolean, pathname: string): React.ReactNode => {
+const getSubMenuOrItem = (
+  item: IMenuDataItem,
+  forgetHistory: boolean,
+  pathname: string,
+): React.ReactNode => {
   if (
     Array.isArray(item.children) &&
     !item.hideChildrenInMenu &&
-    item.children.some(child => typeof child.name !== 'undefined')
+    item.children.some((child) => typeof child.name !== 'undefined')
   ) {
+    // eslint-disable-next-line no-use-before-define,@typescript-eslint/no-use-before-define
     const childrenItems = getNavMenuItems(item.children, forgetHistory, pathname);
     const { name } = item;
     return (
@@ -85,15 +94,21 @@ const getSubMenuOrItem = (item: IMenuDataItem, forgetHistory: boolean, pathname:
   return <Menu.Item key={item.path}>{getMenuItemPath(item, forgetHistory, pathname)}</Menu.Item>;
 };
 
-const getNavMenuItems = (menuData: IMenuDataItem[], forgetHistory: boolean, pathname: string): React.ReactNode[] =>
+const getNavMenuItems = (
+  menuData: IMenuDataItem[],
+  forgetHistory: boolean,
+  pathname: string,
+): React.ReactNode[] =>
   menuData
-    .filter(item => item.name && !item.hideInMenu)
-    .map(item => getSubMenuOrItem(item, forgetHistory, pathname))
-    .filter(item => item); // 过滤出不是空对象的菜单节点.
+    .filter((item) => item.name && !item.hideInMenu)
+    .map((item) => getSubMenuOrItem(item, forgetHistory, pathname))
+    .filter((item) => item); // 过滤出不是空对象的菜单节点.
 
 const getSelectedMenuKeys = (pathname: string, menuData: IMenuDataItem[]): string[] => {
   const flatMenuKeys = getFlatMenuKeys(menuData);
-  return urlToList(pathname).map(itemPath => getMenuMatches(flatMenuKeys, itemPath).pop()) as string[];
+  return urlToList(pathname).map((itemPath) =>
+    getMenuMatches(flatMenuKeys, itemPath).pop(),
+  ) as string[];
 };
 
 export interface BaseMenuProps extends RouterTypes<Route> {
@@ -107,7 +122,7 @@ export interface BaseMenuProps extends RouterTypes<Route> {
   className?: string;
 }
 
-const BaseMenu: React.FC<BaseMenuProps> = props => {
+const BaseMenu: React.FC<BaseMenuProps> = (props) => {
   const {
     match,
     location,
@@ -132,6 +147,7 @@ const BaseMenu: React.FC<BaseMenuProps> = props => {
   }, [location, menuData, openKeys]);
 
   const menuProps = useMemo(() => {
+    // eslint-disable-next-line no-shadow
     let props = {};
     if (openKeys && !collapsed && mode !== 'horizontal') {
       props = {

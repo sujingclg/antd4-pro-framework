@@ -15,7 +15,7 @@ interface HeaderSearchProps {
   className?: string;
 }
 
-const HeaderSearch: React.FC<HeaderSearchProps> = props => {
+const HeaderSearch: React.FC<HeaderSearchProps> = (props) => {
   const {
     placeholder,
     defaultOpen = false,
@@ -64,16 +64,9 @@ const HeaderSearch: React.FC<HeaderSearchProps> = props => {
   });
 
   return (
-    <span
-      className={classNames(className, styles.headerSearch)}
-      onClick={enterSearchMode}
-    >
+    <span className={classNames(className, styles.headerSearch)} onClick={enterSearchMode}>
       <SearchOutlined />
-      <AutoComplete
-        className={inputClsName}
-        value={enteredValue}
-        onChange={handleChange}
-      >
+      <AutoComplete className={inputClsName} value={enteredValue} onChange={handleChange}>
         <Input
           ref={inputRef}
           placeholder={placeholder}
@@ -83,7 +76,7 @@ const HeaderSearch: React.FC<HeaderSearchProps> = props => {
         />
       </AutoComplete>
     </span>
-  )
+  );
 };
 
 HeaderSearch.displayName = 'HeaderSearch';

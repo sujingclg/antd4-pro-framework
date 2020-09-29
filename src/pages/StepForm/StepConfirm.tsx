@@ -15,7 +15,7 @@ interface StepConfirmProps {
   stepsDispatch: Dispatch<Action>;
 }
 
-const StepConfirm: React.FC<StepConfirmProps> = props => {
+const StepConfirm: React.FC<StepConfirmProps> = (props) => {
   const { stepsState, stepsDispatch } = props;
 
   const [loading, setLoading] = useState(false);
@@ -48,7 +48,10 @@ const StepConfirm: React.FC<StepConfirmProps> = props => {
         <Button type="primary" htmlType="submit" loading={loading}>
           提交
         </Button>
-        <Button onClick={() => stepsDispatch({ type: 'setCurrentStep', currentStep: 'info' })} style={{ margin: 8 }}>
+        <Button
+          onClick={() => stepsDispatch({ type: 'setCurrentStep', currentStep: 'info' })}
+          style={{ margin: 8 }}
+        >
           上一步
         </Button>
       </FormItem>
