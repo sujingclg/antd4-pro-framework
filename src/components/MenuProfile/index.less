@@ -1,0 +1,53 @@
+@import '~antd/lib/style/themes/default.less';
+
+.main {
+  display: flex;
+  flex-direction: row;
+  min-height: 70vh;
+  padding: 16px 0;
+  background-color: @body-background;
+
+  .leftMenu {
+    flex: 0 0 224px;
+    border-right: @border-width-base @border-style-base @border-color-split;
+
+    :global {
+      .ant-menu-inline {
+        border: none;
+      }
+      .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+        font-weight: bold;
+      }
+    }
+  }
+
+  .right {
+    flex: auto;
+    display: block;
+    width: 50%;
+    padding: 8px 40px;
+
+    .title {
+      margin-bottom: 12px;
+      color: @heading-color;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 28px;
+    }
+  }
+}
+
+@media screen and (max-width: @screen-lg) {
+  .main {
+    flex-direction: column;
+    .leftMenu {
+      flex: 0 0 0;
+      width: 100%;
+      border: none;
+    }
+    .right {
+      width: 100%;
+      padding: 40px;
+    }
+  }
+}
