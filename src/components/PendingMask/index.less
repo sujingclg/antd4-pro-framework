@@ -1,0 +1,38 @@
+@import "~antd/lib/style/themes/default.less";
+
+.main {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  width: calc(100% + 60px);
+  height: calc(100% + 20px);
+  margin: -10px -30px 0;
+  background-color: rgba(0, 0, 0, 0.3);
+
+  .contentBox {
+    width: 520px;
+    min-height: 300px;
+    margin: auto;
+    padding: 30px;
+    background-color: white;
+    &.opacity {
+      opacity: 0.7;
+    }
+
+    .details {
+      height: 230px;
+      margin: 20px 80px 0;
+      padding: 25px;
+      overflow-y: auto;
+      background-color: @background-color-base;
+    }
+  }
+
+  .progressValue {
+    margin-bottom: 10px;
+    font-size: 30px;
+    text-align: center;
+  }
+}
