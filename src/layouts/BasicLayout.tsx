@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import { useIntl, connect, getLocale } from 'umi';
+import { DispatchProp } from 'react-redux';
 import { Layout } from 'antd';
-import { Dispatch } from 'redux';
+import { useIntl, connect, getLocale } from 'umi';
 import { Helmet } from 'react-helmet';
 import { useMediaQuery } from 'react-responsive';
 import getPageTitle from '@/utils/getPageTitle';
@@ -25,12 +25,11 @@ import styles from './BasicLayout.less';
 
 const { Content } = Layout;
 
-export interface BasicLayoutProps extends RouterTypes<Route> {
+export interface BasicLayoutProps extends RouterTypes<Route>, DispatchProp {
   collapsed: boolean;
   menuData: Array<IMenuDataItem>;
   breadcrumbNameMap: BreadcrumbNameMapType;
   currentUser: ICurrentUser;
-  dispatch: Dispatch;
 }
 
 const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
@@ -71,7 +70,7 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
     breadcrumbNameMap,
   });
 
-  // eslint-disable-next-line no-shadow
+  // eslint-disable-next-line no-shadow,@typescript-eslint/no-shadow
   const handleMenuCollapse = (collapsed: boolean) => {
     dispatch({
       type: 'global/changeLayoutCollapsed',

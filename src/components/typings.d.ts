@@ -1,5 +1,5 @@
 import React from 'react';
-import { RouteProps, RouteComponentProps as BasicRouteProps, match } from 'react-router';
+import { RouteProps, RouteComponentProps, match } from 'react-router';
 
 export interface IMenuDataItem {
   path: string; // 菜单项对应的前端路由路径
@@ -24,8 +24,7 @@ export interface Route extends IMenuDataItem {
 
 type RouteType = Pick<RouteProps, 'component' | 'exact' | 'path'>;
 
-export interface RouterTypes<T extends Object = {}, P = {}> extends BasicRouteProps {
-  computedMatch?: match<P>;
+export interface RouterTypes<T extends Object = {}, P = {}> extends RouteComponentProps<P> {
   route?: RouteType & T;
 }
 
@@ -51,8 +50,4 @@ export interface ICurrentUser {
   // unreadCount?: number;  // 未读消息数
 }
 
-export interface IParams {
-  task_id: string;
-  chapter_id: string;
-  username: string;
-}
+export interface IParams {}

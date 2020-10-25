@@ -33,8 +33,8 @@
   "dependencies": {
     "@umijs/preset-react": "^1.6.14",
     "@umijs/test": "^3.2.24",
-    "antd": "^4.7.2",
-    "axios": "^0.20.0",
+    "antd": "^4.7.3",
+    "axios": "^0.21.0",
     "classnames": "^2.2.6",
     "lodash-es": "^4.17.15",
     "react": "^17.0.1",
