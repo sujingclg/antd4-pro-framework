@@ -17,4 +17,4 @@ const HeaderDropdown: React.FC<HeaderDropdownProps> = (props) => {
   );
 };
 
-export default HeaderDropdown;
+export default memo(HeaderDropdown);

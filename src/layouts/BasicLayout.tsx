@@ -86,6 +86,7 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
           openKeysMoreThanOne
           logo={logo}
           title={defaultSettings.title}
+          // theme="light"
           menuData={menuData}
           collapsed={collapsed}
           onCollapse={handleMenuCollapse}

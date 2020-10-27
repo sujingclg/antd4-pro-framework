@@ -1,5 +1,6 @@
 import React from 'react';
 import MenuProfile from '@/components/MenuProfile';
+import PendingMask from '@/components/PendingMask';
 
 interface HomePageProps {}
 
@@ -11,7 +12,7 @@ const HomePage: React.FC<HomePageProps> = (props) => {
           <p>1232312</p>
         </MenuProfile.Item>
         <MenuProfile.Item key="32" title="121">
-          <p>42342323</p>
+          <PendingMask visible />
         </MenuProfile.Item>
       </MenuProfile>
     </div>

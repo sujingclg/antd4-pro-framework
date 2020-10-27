@@ -94,7 +94,7 @@ class SiderMenu extends React.PureComponent<SiderMenuProps, SiderMenuState> {
       globalSiderMenu,
     } = this.props;
 
-    // eslint-disable-next-line no-shadow
+    // eslint-disable-next-line no-shadow,@typescript-eslint/no-shadow
     const handleCollapse = (collapsed: boolean) => {
       if (onCollapse && !isMobile) {
         onCollapse(collapsed);
@@ -106,13 +106,13 @@ class SiderMenu extends React.PureComponent<SiderMenuProps, SiderMenuState> {
       <Sider
         theme={theme}
         width={siderWidth}
-        breakpoint="xl" // 开启响应式侧边栏
+        breakpoint="md" // 开启响应式侧边栏
         onCollapse={handleCollapse}
         collapsed={collapsed}
         className={classNames(styles.sider, { [styles.global]: globalSiderMenu })}
       >
         {logo || title ? (
-          <div className={styles.logo}>
+          <div className={classNames(styles.logo, { [styles.light]: theme === 'light' })}>
             <Link to="/">
               {logo ? <img src={logo} alt="logo" /> : null}
               {title ? <h1>{title}</h1> : null}
