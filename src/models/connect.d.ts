@@ -16,7 +16,7 @@ interface Loading {
   };
 }
 
-export interface ConnectState {
+export interface IConnectState {
   global: IGlobalModelState;
   menu: IMenuModelState;
   user: IUserModelState;

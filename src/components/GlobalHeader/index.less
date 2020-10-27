@@ -58,7 +58,7 @@
     transition: all 0.3s;
 
     :global(.anticon) {  // 设置帮助图标和语言选择图标的样式
-      color: @text-color;
+      color: @text-color-secondary;
       font-size: 16px;
       vertical-align: middle;
     }
@@ -87,13 +87,12 @@
       background: rgba(255, 255, 255, 0.85);
     }
   }
-  // .username {}
 }
 
 .dark {
   .action {
     color: rgba(255, 255, 255, 0.85);
-    > i {
+    :global(.anticon) {
       color: rgba(255, 255, 255, 0.85);
     }
     &:hover {

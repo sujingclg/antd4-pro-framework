@@ -2,7 +2,7 @@ import React from 'react';
 import { connect, Redirect, ConnectProps, IRoute } from 'umi';
 import pathToRegexp from 'path-to-regexp';
 import Authorized from '@/utils/Authorized';
-import { ConnectState, IUserModelState } from '@/models/connect';
+import { IConnectState, IUserModelState } from '@/models/connect';
 
 function getRouteAuthority(path: string, routeData: IRoute[]): string[] | string | undefined {
   let authorities: string[] | string | undefined;
@@ -40,6 +40,6 @@ const AuthComponent: React.FC<AuthComponentProps> = (props) => {
   );
 };
 
-export default connect(({ user }: ConnectState) => ({
+export default connect(({ user }: IConnectState) => ({
   user,
 }))(AuthComponent);

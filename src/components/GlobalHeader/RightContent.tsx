@@ -10,7 +10,7 @@ import SelectLang from '../SelectLang';
 import { isUrl } from '../utils/utils';
 import styles from './index.less';
 
-export interface RightContentProps extends Partial<AvatarDropdownProps> {
+export interface RightContentProps extends AvatarDropdownProps {
   theme?: MenuProps['theme'];
   helpHref?: string;
 }

@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
-import { Menu, Avatar, Button } from 'antd';
-import { UserOutlined, SettingOutlined, AuditOutlined, LogoutOutlined } from '@ant-design/icons';
+import { Menu, Avatar } from 'antd';
+import { UserOutlined, SettingOutlined, LogoutOutlined } from '@ant-design/icons';
 import { MenuInfo } from 'rc-menu/lib/interface';
 import classNames from 'classnames';
 import { useIntl, history } from 'umi';

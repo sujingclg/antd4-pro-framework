@@ -4,7 +4,7 @@ import { Link } from 'umi';
 import RightContent, { RightContentProps } from './RightContent';
 import styles from './index.less';
 
-export interface GlobalHeaderProps extends Partial<RightContentProps> {
+export interface GlobalHeaderProps extends RightContentProps {
   collapsed?: boolean;
   isMobile?: boolean;
   logo?: string;

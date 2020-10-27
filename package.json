@@ -39,7 +39,6 @@
     "lodash-es": "^4.17.15",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-helmet": "^6.1.0",
     "react-responsive": "^8.1.0",
     "umi": "^3.2.24",
     "yorkie": "^2.0.0"

@@ -25,7 +25,7 @@ export interface Route extends IMenuDataItem {
 type RouteType = Pick<RouteProps, 'component' | 'exact' | 'path'>;
 
 export interface RouterTypes<T extends Object = {}, P = {}> extends RouteComponentProps<P> {
-  route?: RouteType & T;
+  route: RouteType & T;
 }
 
 export type WithFalse<T> = T | false;

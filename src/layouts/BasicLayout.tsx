@@ -1,10 +1,8 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { DispatchProp } from 'react-redux';
 import { Layout } from 'antd';
-import { useIntl, connect, getLocale } from 'umi';
-import { Helmet } from 'react-helmet';
+import { useIntl, connect, getLocale, Helmet } from 'umi';
 import { useMediaQuery } from 'react-responsive';
-import getPageTitle from '@/utils/getPageTitle';
 import SiderMenu from '@/components/SiderMenu';
 import {
   BreadcrumbNameMapType,
@@ -14,10 +12,11 @@ import {
   RouterTypes,
 } from '@/components/typings';
 import RouteContext, { IRouteContext } from '@/components/RouteContext';
-import { ConnectState } from '@/models/connect';
+import { IConnectState } from '@/models/connect';
 import defaultSettings from '@/defaultSettings';
 import { FETCH_CURRENT_USER } from '@/actionTypes/user';
 import AppContext from '@/AppContext';
+import getPageTitle from '@/utils/getPageTitle';
 import logo from '@/assets/logo.png';
 import Header from './Header';
 import Footer from './Footer';
@@ -39,13 +38,11 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
     breadcrumbNameMap,
     dispatch,
 
-    route,
+    route: { routes, path, authority },
     location,
     children,
-
-    ...restProps
   } = props;
-  const { routes, path, authority } = route!;
+
   const intl = useIntl();
 
   const [isMobile, setIsMobile] = useState<boolean>(
@@ -82,24 +79,28 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
 
   const layout = (
     <Layout>
-      <SiderMenu
-        {...props}
-        isMobile={isMobile}
-        openKeysMoreThanOne
-        logo={logo}
-        title={defaultSettings.title}
-        menuData={menuData}
-        collapsed={collapsed}
-        onCollapse={handleMenuCollapse}
-        siderWidth={200}
-      />
+      {!isTopMenu && (
+        <SiderMenu
+          {...props}
+          isMobile={isMobile}
+          openKeysMoreThanOne
+          logo={logo}
+          title={defaultSettings.title}
+          menuData={menuData}
+          collapsed={collapsed}
+          onCollapse={handleMenuCollapse}
+          siderWidth={230}
+        />
+      )}
       <Layout className={styles.layout}>
         <Header
-          {...restProps}
+          {...props}
           collapsed={collapsed}
           isTopMenu={isTopMenu}
           isMobile={isMobile}
+          // theme="light"
           logo={logo}
+          title={defaultSettings.title}
           onCollapse={handleMenuCollapse}
           dispatch={dispatch}
         />
@@ -133,7 +134,7 @@ const mapStateToProps = ({
   global,
   menu: menuModel,
   user,
-}: ConnectState): Pick<
+}: IConnectState): Pick<
   BasicLayoutProps,
   'collapsed' | 'menuData' | 'breadcrumbNameMap' | 'currentUser'
 > => ({
