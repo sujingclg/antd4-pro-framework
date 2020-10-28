@@ -1,5 +1,5 @@
 import React from 'react';
-import { RouteProps, RouteComponentProps, match } from 'react-router';
+import { RouteProps, RouteComponentProps } from 'react-router';
 
 export interface IMenuDataItem {
   path: string; // 菜单项对应的前端路由路径
