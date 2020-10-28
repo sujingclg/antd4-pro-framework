@@ -2,6 +2,9 @@ import { defineConfig } from 'umi';
 import pageRoutes from './router.config';
 
 export default defineConfig({
+  nodeModulesTransform: {
+    type: 'none',
+  },
   antd: {},
   dva: {},
   locale: {
@@ -11,6 +14,9 @@ export default defineConfig({
   // dynamicImport: {
   //   loading: '@/components/PageLoading',
   // },
+  request: {
+    dataField: '',
+  },
 
   routes: pageRoutes,
 
@@ -19,5 +25,9 @@ export default defineConfig({
   //   '@primary-color': '#38ACC1',
   // },
   // base: '/',
-  // publicPath: '//sf6-scmcdn-tos.pstatp.com/goofy/lab-speech/console/',
+  // publicPath: '/',
+  
+  // devServer: {
+  //   port: 9003,
+  // },
 });
