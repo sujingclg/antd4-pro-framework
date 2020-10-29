@@ -75,7 +75,7 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
     });
   };
 
-  const isTopMenu = false;
+  const isTopMenu = true;
 
   const layout = (
     <Layout>
@@ -86,7 +86,7 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
           openKeysMoreThanOne
           logo={logo}
           title={defaultSettings.title}
-          // theme="light"
+          theme="light"
           menuData={menuData}
           collapsed={collapsed}
           onCollapse={handleMenuCollapse}
@@ -99,7 +99,7 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
           collapsed={collapsed}
           isTopMenu={isTopMenu}
           isMobile={isMobile}
-          // theme="light"
+          theme="light"
           logo={logo}
           title={defaultSettings.title}
           onCollapse={handleMenuCollapse}
