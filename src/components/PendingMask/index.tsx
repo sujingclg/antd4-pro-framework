@@ -78,7 +78,7 @@ const PendingMask: React.FC<PendingMaskProps> = (props) => {
 
   return (
     <Fragment>
-      {hideMask ? null : (
+      {!hideMask && (
         <div className={styles.main}>
           <div className={classNames(styles.contentBox, { [styles.opacity]: transparent })}>
             {renderAnimation()}

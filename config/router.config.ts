@@ -32,11 +32,16 @@ const routerConfig: Array<RouterConfigType> = [
         component: '@/pages/',
       },
       {
-        exact: true,
         path: './create-project',
         name: '创建项目',
         icon: 'form',
         component: '@/pages/StepForm',
+      },
+      {
+        path: './show-pending',
+        name: '等待中',
+        icon: 'form',
+        component: '@/pages/ShowPending',
       },
       {
         path: '/exception',

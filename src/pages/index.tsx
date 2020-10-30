@@ -12,7 +12,7 @@ const HomePage: React.FC<HomePageProps> = (props) => (
         <p>1232312</p>
       </MenuProfile.Item>
       <MenuProfile.Item key="32" title="121">
-        <PendingMask visible />
+        <p>sdgsdg</p>
       </MenuProfile.Item>
     </MenuProfile>
     <br />
