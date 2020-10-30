@@ -20,8 +20,9 @@ const AvatarDropdown: React.FC<AvatarDropdownProps> = (props) => {
   const onMenuClick = ({ key }: MenuInfo) => {
     if (key === 'logout') {
       onLogout && onLogout();
+    } else {
+      history.push(`/account/${key}`);
     }
-    history.push(`/account/${key}`);
   };
 
   const menu = (
