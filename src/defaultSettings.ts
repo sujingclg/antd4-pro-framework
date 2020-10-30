@@ -5,6 +5,7 @@ export interface ISettings {
     locale: boolean;
   };
   title: string;
+  apiBaseURL: string; // axiosInstance 路径前缀
   iconfontUrl: string;
 }
 
@@ -15,6 +16,7 @@ const defaultSettings: ISettings = {
     locale: false,
   },
   title: 'Antd4 框架',
+  apiBaseURL: '/api',
   iconfontUrl: '//at.alicdn.com/t/font_8d5l8fzk5b87iudi.js',
 };
 

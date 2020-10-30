@@ -1,8 +1,9 @@
 import axios, { AxiosError } from 'axios';
 import { history } from 'umi';
 import { notification } from 'antd';
-import qs from 'qs';
-// import { authorityKey, setAuthority } from './Authorized';
+import defaultSettings from '@/defaultSettings';
+
+const { apiBaseURL } = defaultSettings;
 
 const codeMessage: { [key: number]: string } = {
   200: '服务器成功返回请求的数据。',
@@ -51,8 +52,8 @@ const errorHandler = ({ response, config }: AxiosError): any => {
 };
 
 const axiosInstance = axios.create({
-  baseURL: '/api/',
-  timeout: 30000,
+  baseURL: apiBaseURL,
+  timeout: 3000,
   // headers: {},
 });
 

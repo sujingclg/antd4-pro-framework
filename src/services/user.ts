@@ -8,7 +8,7 @@ export async function queryCurrentUser(): Promise<ICurrentUser | void> {
       data: {
         data: { picture, ...restProps },
       },
-    } = await axiosInstance.get<IBaseResponse<IBackendUserItem>>('/whoami');
+    } = await axiosInstance.get<IBaseResponse<IBackendUserItem>>('/user_info');
     return { ...restProps, avatar: picture };
   } catch (e) {
     console.log("Fail to get user's information. Details: ", e);

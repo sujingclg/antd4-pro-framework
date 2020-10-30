@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { PageHeader, Typography, Tabs } from 'antd';
 import { BreadcrumbProps as AntdBreadcrumbProps } from 'antd/lib/breadcrumb';
+import classNames from 'classnames';
 import { useIntl } from 'umi';
 import GridContent from './GridContent';
 import { WithFalse } from '../typings';
@@ -52,7 +53,13 @@ const PageHeaderWrapper: React.FC<PageHeaderWrapperProps> = (props) => {
         <div className={styles.main}>
           <div className={styles.row}>
             {content && <div className={styles.content}>{content}</div>}
-            {extraContent && <div className={styles.extraContent}>{extraContent}</div>}
+            {extraContent && (
+              <div
+                className={classNames(styles.extraContent, { [styles.withoutContent]: !content })}
+              >
+                {extraContent}
+              </div>
+            )}
           </div>
         </div>
       </div>
