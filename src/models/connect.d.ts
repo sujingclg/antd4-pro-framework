@@ -1,14 +1,11 @@
-import { IGlobalModelState } from './global';
 import { IMenuModelState } from './menu';
 import { IUserModelState } from './user';
 
-export { IGlobalModelState, IUserModelState };
+export { IUserModelState };
 
 interface Loading {
-  global: boolean;
   effects: { [key: string]: boolean | undefined };
   models: {
-    global?: boolean;
     login?: boolean;
     menu?: boolean;
     setting?: boolean;
@@ -17,7 +14,6 @@ interface Loading {
 }
 
 export interface IConnectState {
-  global: IGlobalModelState;
   menu: IMenuModelState;
   user: IUserModelState;
   loading: Loading;

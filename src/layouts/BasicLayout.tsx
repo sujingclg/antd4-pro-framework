@@ -25,7 +25,6 @@ import styles from './BasicLayout.less';
 const { Content } = Layout;
 
 export interface BasicLayoutProps extends RouterTypes<Route>, DispatchProp {
-  collapsed: boolean;
   menuData: Array<IMenuDataItem>;
   breadcrumbNameMap: BreadcrumbNameMapType;
   currentUser: ICurrentUser;
@@ -33,17 +32,21 @@ export interface BasicLayoutProps extends RouterTypes<Route>, DispatchProp {
 
 const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
   const {
-    collapsed,
+    route: { routes, path, authority },
+    location,
+
     menuData,
     breadcrumbNameMap,
     dispatch,
 
-    route: { routes, path, authority },
-    location,
     children,
   } = props;
 
   const intl = useIntl();
+
+  const [collapsed, setCollapsed] = useState(true);
+  const [isTopMenu, setIsTopMenu] = useState(false);
+  const [theme, setTheme] = useState<'light' | 'dark'>('dark');
 
   const [isMobile, setIsMobile] = useState<boolean>(
     useMediaQuery({ maxWidth: 575 }, undefined, (match: boolean) => {
@@ -67,15 +70,10 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
     breadcrumbNameMap,
   });
 
-  // eslint-disable-next-line no-shadow,@typescript-eslint/no-shadow
+  // eslint-disable-next-line @typescript-eslint/no-shadow
   const handleMenuCollapse = (collapsed: boolean) => {
-    dispatch({
-      type: 'global/changeLayoutCollapsed',
-      payload: collapsed,
-    });
+    setCollapsed(collapsed);
   };
-
-  const isTopMenu = false;
 
   const layout = (
     <Layout>
@@ -86,7 +84,7 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
           openKeysMoreThanOne
           logo={logo}
           title={defaultSettings.title}
-          theme="light"
+          theme={theme}
           menuData={menuData}
           collapsed={collapsed}
           onCollapse={handleMenuCollapse}
@@ -99,7 +97,7 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
           collapsed={collapsed}
           isTopMenu={isTopMenu}
           isMobile={isMobile}
-          theme="light"
+          theme={theme}
           logo={logo}
           title={defaultSettings.title}
           onCollapse={handleMenuCollapse}
@@ -132,14 +130,9 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
 };
 
 const mapStateToProps = ({
-  global,
-  menu: menuModel,
-  user,
-}: IConnectState): Pick<
-  BasicLayoutProps,
-  'collapsed' | 'menuData' | 'breadcrumbNameMap' | 'currentUser'
-> => ({
-  collapsed: global.collapsed,
+                           menu: menuModel,
+                           user,
+                         }: IConnectState): Pick<BasicLayoutProps, 'menuData' | 'breadcrumbNameMap' | 'currentUser'> => ({
   menuData: menuModel.menuData,
   breadcrumbNameMap: menuModel.breadcrumbNameMap,
   currentUser: user.currentUser,
