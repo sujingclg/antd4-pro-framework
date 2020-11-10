@@ -1,7 +1,8 @@
 import { Reducer } from 'redux';
 import { ICurrentUser } from '@/components/typings';
 import { queryCurrentUser, requestLogout } from '@/services/user';
-import { Effect, removeNamespace, user as userActionTypes } from '@/actionTypes';
+import { Effect } from '@/actionTypes';
+import { IFetchCurrentUserAction, ISaveCurrentUserAction } from '@/actionTypes/user';
 
 export interface IUserModelState {
   currentUser: ICurrentUser;
@@ -11,11 +12,11 @@ interface IUserModel {
   namespace: 'user';
   state: IUserModelState;
   effects: {
-    fetchCurrentUser: Effect<userActionTypes.IFetchCurrentUserAction>;
+    fetchCurrentUser: Effect<IFetchCurrentUserAction, any, ICurrentUser | void>;
     logout: Effect;
   };
   reducers: {
-    saveCurrentUser: Reducer<IUserModelState, userActionTypes.ISaveCurrentUserAction>;
+    saveCurrentUser: Reducer<IUserModelState, ISaveCurrentUserAction>;
   };
 }
 
@@ -29,10 +30,13 @@ const UserModel: IUserModel = {
   effects: {
     *fetchCurrentUser(_, { call, put }) {
       const currentUser = yield call(queryCurrentUser);
-      yield put({
-        type: removeNamespace(userActionTypes.SAVE_CURRENT_USER),
-        payload: currentUser,
-      });
+      if (currentUser) {
+        const action: ISaveCurrentUserAction = {
+          type: 'saveCurrentUser',
+          payload: currentUser,
+        };
+        yield put(action);
+      }
     },
 
     *logout(_, { call }) {
@@ -42,7 +46,7 @@ const UserModel: IUserModel = {
 
   reducers: {
     saveCurrentUser(state, { payload }) {
-      return { ...state!, currentUser: payload || {} };
+      return { ...state!, currentUser: payload };
     },
   },
 };

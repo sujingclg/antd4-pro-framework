@@ -130,9 +130,9 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
 };
 
 const mapStateToProps = ({
-                           menu: menuModel,
-                           user,
-                         }: IConnectState): Pick<BasicLayoutProps, 'menuData' | 'breadcrumbNameMap' | 'currentUser'> => ({
+  menu: menuModel,
+  user,
+}: IConnectState): Pick<BasicLayoutProps, 'menuData' | 'breadcrumbNameMap' | 'currentUser'> => ({
   menuData: menuModel.menuData,
   breadcrumbNameMap: menuModel.breadcrumbNameMap,
   currentUser: user.currentUser,

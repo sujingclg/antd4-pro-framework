@@ -11,8 +11,7 @@ export interface IFetchCurrentUserAction {
 /**
  * Reducers
  */
-export const SAVE_CURRENT_USER = 'user/saveCurrentUser';
 export interface ISaveCurrentUserAction {
-  type: typeof SAVE_CURRENT_USER;
+  type: 'saveCurrentUser';
   payload: ICurrentUser;
 }

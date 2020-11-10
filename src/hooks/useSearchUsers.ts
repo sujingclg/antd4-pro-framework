@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react';
 import axios from 'axios';
 
-async function queryUserSearch(url: string, queryString: string): Promise<string[] | void> {
+async function queryUserSearch<T>(url: string, queryString: string): Promise<T | undefined> {
   try {
     const res = await axios.get(`${url}?${queryString}`);
     return res.data;
@@ -10,35 +10,31 @@ async function queryUserSearch(url: string, queryString: string): Promise<string
   }
 }
 
-interface UseSearchUsersFunc {
-  <T>(props: { url: string; transformFunc: (rawData: any) => T[] }): {
-    users: T[];
-    loading: boolean;
-    /**
-     * 请求时传入的查询字符串, 即 url 中, 问号后面跟着的查询参数
-     * @param queryString
-     */
-    onSearch: (queryString: string) => void;
-  };
-}
-
-// TODO 使用函数范型方式重构
-const useSearchUsers: UseSearchUsersFunc = ({ url, transformFunc }) => {
-  const [value, setValue] = useState<any>([]);
+function useSearchUsers<T, S>({
+  url,
+  transformFunc,
+}: {
+  url: string;
+  transformFunc: (rawData?: S) => T[];
+}): {
+  users: T[];
+  loading: boolean;
+  onSearch: (queryString: string) => void;
+} {
+  const [value, setValue] = useState<T[]>([]);
   const [loading, setLoading] = useState(false);
 
   const onSearch = useCallback(
     async (querySting: string) => {
       setLoading(true);
-      const data = await queryUserSearch(url, querySting);
+      const data = await queryUserSearch<S>(url, querySting);
       const users = transformFunc(data);
       setValue(users);
       setLoading(false);
     },
     [url, transformFunc],
   );
-
   return { users: value, loading, onSearch };
-};
+}
 
 export default useSearchUsers;
