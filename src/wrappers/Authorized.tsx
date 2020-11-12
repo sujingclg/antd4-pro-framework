@@ -40,6 +40,8 @@ const AuthComponent: React.FC<AuthComponentProps> = (props) => {
   );
 };
 
-export default connect(({ user }: IConnectState) => ({
+const mapStateToProps = ({ user }: IConnectState): Pick<AuthComponentProps, 'user'> => ({
   user,
-}))(AuthComponent);
+});
+
+export default connect(mapStateToProps)(AuthComponent);

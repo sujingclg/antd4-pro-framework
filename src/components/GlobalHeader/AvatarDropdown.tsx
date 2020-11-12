@@ -37,7 +37,7 @@ const AvatarDropdown: React.FC<AvatarDropdownProps> = (props) => {
       </Menu.Item>
       <Menu.Divider />
       <Menu.Item key="logout">
-        <LogoutOutlined />{' '}
+        <LogoutOutlined /> &nbsp;
         {intl.formatMessage({ id: 'menu.Account.Logout', defaultMessage: 'Logout' })}
       </Menu.Item>
     </Menu>
