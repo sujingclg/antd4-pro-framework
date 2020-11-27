@@ -26,8 +26,19 @@ export default defineConfig({
   // },
   // base: '/',
   // publicPath: '/',
-  
+
   // devServer: {
   //   port: 9003,
+  // },
+
+  // proxy: {
+  //   '/api/': {
+  //     target: 'https://your.website',
+  //     ws: true,
+  //     changeOrigin: true,
+  //     onProxyReq(proxyReq: any) {
+  //       proxyReq.setHeader('cookie', ['your cookie']);
+  //     },
+  //   },
   // },
 });
