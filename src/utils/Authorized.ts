@@ -28,9 +28,11 @@ export function getAuthority(str?: string): AuthorityType[] {
 export function setAuthority(authority?: AuthorityType | AuthorityType[]): void {
   const authorityArray = typeof authority === 'string' ? [authority] : authority;
   localStorage.setItem(authorityKey, JSON.stringify(authorityArray));
+  // eslint-disable-next-line @typescript-eslint/no-use-before-define
   reloadAuthorized();
 }
 
+// eslint-disable-next-line import/no-mutable-exports
 let Authorized = AuthorizeRenderer(getAuthority());
 
 export const reloadAuthorized = () => {

@@ -19,7 +19,7 @@ export interface SiderMenuProps extends BaseMenuProps {
 }
 
 interface SiderMenuState {
-  openKeys: Array<string>;
+  openKeys: string[];
   pathname?: string;
 }
 

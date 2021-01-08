@@ -54,17 +54,21 @@ export default function checkPermissions<T, E>(
     return Exception;
   }
 
-  // TODO 当传入的componentAuthority是Promise对象时执行以下语句
   if (routeAuthority instanceof Promise) {
+    // TODO 当传入的componentAuthority是Promise对象时执行以下语句
   }
 
-  // TODO 当传入的componentAuthority是Function对象时执行以下语句
   if (typeof routeAuthority === 'function') {
+    // TODO 当传入的componentAuthority是Function对象时执行
   }
 
   throw new Error('unsupported parameters');
 }
 
-export function check<T, K>(routeAuthority: RouteAuthorityType, Target: T, Exception: K): T | K | React.ReactNode {
+export function check<T, K>(
+  routeAuthority: RouteAuthorityType,
+  Target: T,
+  Exception: K,
+): T | K | React.ReactNode {
   return checkPermissions(routeAuthority, CURRENT_USER_AUTHORITY, Target, Exception);
 }

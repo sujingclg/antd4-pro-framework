@@ -4,7 +4,7 @@ import Exception from '@/components/Exception';
 
 export default () => {
   const intl = useIntl();
-  return(
+  return (
     <div>
       <Exception
         type={500}

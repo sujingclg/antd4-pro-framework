@@ -17,7 +17,7 @@ interface ExceptionProps {
   redirect?: string;
 }
 
-const Exception: React.FC<ExceptionProps> = props => {
+const Exception: React.FC<ExceptionProps> = (props) => {
   const {
     type,
     title,
@@ -29,7 +29,7 @@ const Exception: React.FC<ExceptionProps> = props => {
     redirect = '/',
     ...restProps
   } = props;
-  const pageType = (type && type in typeConfig) ? type : '404';
+  const pageType = type && type in typeConfig ? type : '404';
   return (
     <div className={classNames(styles.exception, className)} {...restProps}>
       <div className={styles.imgBlock}>
@@ -42,14 +42,15 @@ const Exception: React.FC<ExceptionProps> = props => {
         <h1>{title || typeConfig[pageType].title}</h1>
         <div className={styles.desc}>{desc || typeConfig[pageType].desc}</div>
         <div className={styles.actions}>
-          {actions || React.createElement(
-            Link,
-            {
-              to: redirect,
-              href: redirect,
-            },
-            <Button type="primary">{backText}</Button>,
-          )}
+          {actions ||
+            React.createElement(
+              Link,
+              {
+                to: redirect,
+                href: redirect,
+              },
+              <Button type="primary">{backText}</Button>,
+            )}
         </div>
       </div>
     </div>

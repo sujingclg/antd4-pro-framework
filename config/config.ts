@@ -1,4 +1,5 @@
 import { defineConfig } from 'umi';
+import { ClientRequest } from 'http';
 import pageRoutes from './router.config';
 
 export default defineConfig({
@@ -36,7 +37,7 @@ export default defineConfig({
   //     target: 'https://your.website',
   //     ws: true,
   //     changeOrigin: true,
-  //     onProxyReq(proxyReq: any) {
+  //     onProxyReq(proxyReq: ClientRequest) {
   //       proxyReq.setHeader('cookie', ['your cookie']);
   //     },
   //   },

@@ -70,7 +70,7 @@ const getSubMenuOrItem = (
     !item.hideChildrenInMenu &&
     item.children.some((child) => typeof child.name !== 'undefined')
   ) {
-    // eslint-disable-next-line no-use-before-define,@typescript-eslint/no-use-before-define
+    // eslint-disable-next-line @typescript-eslint/no-use-before-define
     const childrenItems = getNavMenuItems(item.children, forgetHistory, pathname);
     const { name } = item;
     return (
@@ -116,8 +116,8 @@ export interface BaseMenuProps extends RouterTypes<Route> {
   theme?: MenuProps['theme'];
   collapsed?: boolean;
   onOpenChange?: (openKeys: string[]) => void;
-  openKeys?: Array<string>;
-  menuData: Array<IMenuDataItem>;
+  openKeys?: string[];
+  menuData: IMenuDataItem[];
   forgetHistory?: boolean;
   className?: string;
 }
@@ -147,7 +147,7 @@ const BaseMenu: React.FC<BaseMenuProps> = (props) => {
   }, [location, menuData, openKeys]);
 
   const menuProps = useMemo(() => {
-    // eslint-disable-next-line no-shadow
+    // eslint-disable-next-line @typescript-eslint/no-shadow
     let props = {};
     if (openKeys && !collapsed && mode !== 'horizontal') {
       props = {

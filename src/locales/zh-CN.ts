@@ -5,4 +5,4 @@ export default {
   'navBar.lang': '语言',
   ...menu,
   ...global,
-}
+};

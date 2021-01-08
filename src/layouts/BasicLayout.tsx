@@ -25,7 +25,7 @@ import styles from './BasicLayout.less';
 const { Content } = Layout;
 
 export interface BasicLayoutProps extends RouterTypes<Route>, DispatchProp {
-  menuData: Array<IMenuDataItem>;
+  menuData: IMenuDataItem[];
   breadcrumbNameMap: BreadcrumbNameMapType;
   currentUser: ICurrentUser;
 }
@@ -33,7 +33,7 @@ export interface BasicLayoutProps extends RouterTypes<Route>, DispatchProp {
 const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
   const {
     route: { routes, path, authority },
-    location,
+    location: { pathname },
 
     menuData,
     breadcrumbNameMap,
@@ -42,7 +42,7 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
     children,
   } = props;
 
-  const intl = useIntl();
+  const { formatMessage } = useIntl();
 
   const [collapsed, setCollapsed] = useState(true);
   const [isTopMenu, setIsTopMenu] = useState(false);
@@ -57,7 +57,7 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
   useEffect(() => {
     dispatch({
       type: 'menu/getMenuData',
-      payload: { routes, formatMessage: intl.formatMessage, path, authority },
+      payload: { routes, formatMessage, path, authority },
     });
   }, [getLocale()]);
 
@@ -66,7 +66,7 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
   }, []);
 
   const getContext: () => IRouteContext = () => ({
-    location,
+    location: { pathname },
     breadcrumbNameMap,
   });
 
@@ -113,7 +113,7 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
     <Fragment>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>{getPageTitle(location!.pathname, breadcrumbNameMap, intl.formatMessage)}</title>
+        <title>{getPageTitle(pathname, breadcrumbNameMap, formatMessage)}</title>
         <link
           rel="shortcut icon"
           href="//sf1-ttcdn-tos.pstatp.com/obj/ttfe/2020-01-06/lab-speech/static/favicon.ico"

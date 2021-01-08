@@ -20,11 +20,11 @@ export interface PageHeaderWrapperProps<T = any> {
   extraBreadcrumb?: AntdBreadcrumbProps['routes'];
 
   // Footer Props
-  tabList?: Array<{
+  tabList?: {
     tab: string | React.ReactNode;
     key: string;
     disabled?: boolean;
-  }>;
+  }[];
   activeTabKey?: T;
   onTabChange?: (activeKey: T) => void;
   tabBarExtraContent?: React.ReactNode;
