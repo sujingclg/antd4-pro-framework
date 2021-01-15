@@ -1,5 +1,9 @@
 @import "~antd/lib/style/themes/default.less";
 
+//@primary-6: #05afd1;
+//@primary-7: #049dbc;
+//@primary-8: #048ca7;
+
 .main {
   box-sizing: border-box;
   height: 200px;
@@ -14,12 +18,9 @@
   transform-style: preserve-3d;
 }
 
-.cube,
 .cube::after,
 .cube::before {
   position: absolute;
-  //noinspection Stylelint
-  float: left;
   width: 3em;
   height: 3em;
   content: '';
@@ -27,24 +28,25 @@
 
 .cube {
   position: relative;
-  //background-color: #05afd1;
+  float: left;
+  width: 3em;
+  height: 3em;
   background-color: @primary-6;
   box-shadow: 13em 13em 1.5em rgba(0, 0, 0, 0.1);
   transform: translateZ(3em);
   transform-style: preserve-3d;
   transition: .25s;
   animation: anim 1s infinite;
+  content: '';
 }
 
 .cube::after {
-  //background-color: #049dbc;
   background-color: @primary-7;
   transform: rotateX(-90deg) translateY(3em);
   transform-origin: 100% 100%;
 }
 
 .cube::before {
-  //background-color: #048ca7;
   background-color: @primary-8;
   transform: rotateY(90deg) translateX(3em);
   transform-origin: 100% 0;
