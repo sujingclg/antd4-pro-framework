@@ -19,7 +19,7 @@ export interface IMenuDataItem {
 }
 
 export interface Route extends IMenuDataItem {
-  routes: Route[];
+  routes?: Route[];
 }
 
 type RouteType = Pick<RouteProps, 'component' | 'exact' | 'path'>;
@@ -30,9 +30,7 @@ export interface RouterTypes<T extends Object = {}, P = {}> extends RouteCompone
 
 export type WithFalse<T> = T | false;
 
-export interface BreadcrumbNameMapType {
-  [path: string]: IMenuDataItem;
-}
+export type BreadcrumbNameMapType = Record<string, IMenuDataItem>;
 
 export interface ICurrentUser {
   username?: string;

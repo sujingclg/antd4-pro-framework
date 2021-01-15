@@ -11,6 +11,6 @@ export async function convertFileToBase64(file: File): Promise<string> {
 export const sleep = async (ms: number) =>
   new Promise((res) => {
     setTimeout(() => {
-      res();
+      res('');
     }, ms);
   });

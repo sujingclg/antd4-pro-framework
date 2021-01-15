@@ -1,7 +1,7 @@
 import { Reducer } from 'redux';
 import { Effect } from 'dva';
 import { IMenuDataItem, Route, BreadcrumbNameMapType } from '@/components/typings';
-import getMenuData from '@/utils/getMenuData';
+import getMenuData from '@/components/utils/getMenuData';
 
 export interface IMenuModelState {
   menuData: IMenuDataItem[];

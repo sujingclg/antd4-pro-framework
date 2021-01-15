@@ -1,7 +1,6 @@
 import React from 'react';
 import MenuProfile from '@/components/MenuProfile';
-import PendingMask from '@/components/PendingMask';
-import GridContent from '@/components/PageHeaderWrapper/GridContent';
+import { GridContent } from '@/components/PageHeaderWrapper';
 
 interface HomePageProps {}
 

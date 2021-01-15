@@ -121,4 +121,4 @@ const PageHeaderWrapper: React.FC<PageHeaderWrapperProps> = (props) => {
   );
 };
 
-export default PageHeaderWrapper;
+export { PageHeaderWrapper as default, GridContent };

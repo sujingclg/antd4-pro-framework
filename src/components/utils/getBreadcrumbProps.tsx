@@ -3,8 +3,8 @@ import * as H from 'history';
 import { BreadcrumbProps as AntdBreadcrumbProps } from 'antd/lib/breadcrumb';
 import { Link } from 'umi';
 import pathToRegexp from 'path-to-regexp';
-import Authorized from '@/utils/Authorized';
 import defaultSettings from '@/defaultSettings';
+import Authorized from './Authorized';
 import { BreadcrumbNameMapType, IMenuDataItem } from '../typings';
 import { urlToList } from './pathTools';
 

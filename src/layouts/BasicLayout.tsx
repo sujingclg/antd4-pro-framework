@@ -16,7 +16,7 @@ import { IConnectState } from '@/models/connect';
 import defaultSettings from '@/defaultSettings';
 import { FETCH_CURRENT_USER } from '@/actionTypes/user';
 import AppContext from '@/AppContext';
-import getPageTitle from '@/utils/getPageTitle';
+import getPageTitle from '@/components/utils/getPageTitle';
 import logo from '@/assets/logo.png';
 import Header from './Header';
 import Footer from './Footer';

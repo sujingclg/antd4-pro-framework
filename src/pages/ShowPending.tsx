@@ -1,6 +1,6 @@
 import React from 'react';
 import PendingMask from '@/components/PendingMask';
-import GridContent from '@/components/PageHeaderWrapper/GridContent';
+import { GridContent } from '@/components/PageHeaderWrapper';
 
 interface ShowPendingProps {}
 

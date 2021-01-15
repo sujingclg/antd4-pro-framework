@@ -1,8 +1,8 @@
 import { BreadcrumbNameMapType, IMenuDataItem, Route } from '@/components/typings';
-import Authorized from '@/utils/Authorized';
 import defaultSettings from '@/defaultSettings';
 import memoizeOne from 'memoize-one';
 import { isEqual } from 'lodash-es';
+import Authorized from './Authorized';
 
 const { check } = Authorized;
 
@@ -96,7 +96,7 @@ function getBreadcrumbNameMap(menuData: IMenuDataItem[]): BreadcrumbNameMapType 
   if (!menuData) {
     return {};
   }
-  const routerMap: { [flatMenuKey: string]: IMenuDataItem } = {};
+  const routerMap: Record<string, IMenuDataItem> = {};
 
   const flattenMenuData = (data: IMenuDataItem[]) => {
     data.forEach((menuItem) => {
