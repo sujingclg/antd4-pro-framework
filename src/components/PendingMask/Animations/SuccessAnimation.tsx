@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 import classNames from 'classnames';
 import styles from './SuccessAnimation.less';
 
-const SuccessAnimation: React.FC = (props) => (
+const SuccessAnimation: React.FC = () => (
   <div className={styles.main}>
     <div className={styles.successCheckmark}>
       <div className={styles.checkIcon}>

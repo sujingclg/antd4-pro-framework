@@ -1,9 +1,7 @@
 import React from 'react';
 import styles from './WaitingAnimation.less';
 
-interface AnimationProps {}
-
-const WaitingAnimation: React.FC<AnimationProps> = (props) => {
+const WaitingAnimation: React.FC = () => {
   return (
     <div className={styles.main}>
       <div className={styles.base}>

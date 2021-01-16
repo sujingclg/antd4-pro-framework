@@ -3,7 +3,7 @@ import styles from './ErrorAnimation.less';
 
 // https://bootsnipp.com/snippets/2eEjz
 
-const ErrorAnimation: React.FC = (props) => {
+const ErrorAnimation: React.FC = () => {
   return (
     <div className={styles.main}>
       <div className={styles.xMarkContainer}>
