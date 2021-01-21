@@ -2,7 +2,7 @@ import { effects } from 'redux-saga';
 import { IFetchCurrentUserAction, ISaveCurrentUserAction } from '@/actionTypes/user';
 import axiosInstance from '@/utils/axiosInstance';
 import { queryCurrentUser } from '@/services/user';
-import { IBackendUserItem, IBaseResponse } from '@/data';
+import { IBackendUserItem, IBaseResponse } from '@/typings/interface';
 import UserModel from '../user';
 
 jest.mock('@/utils/axiosInstance');

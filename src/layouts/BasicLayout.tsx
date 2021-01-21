@@ -17,7 +17,7 @@ import defaultSettings from '@/defaultSettings';
 import { FETCH_CURRENT_USER } from '@/actionTypes/user';
 import AppContext from '@/AppContext';
 import getPageTitle from '@/components/utils/getPageTitle';
-import logo from '@/assets/logo.png';
+import logo from '@/assets/logo.svg';
 import Header from './Header';
 import Footer from './Footer';
 import styles from './BasicLayout.less';
@@ -114,11 +114,7 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
       <Helmet>
         <meta charSet="utf-8" />
         <title>{getPageTitle(pathname, breadcrumbNameMap, formatMessage)}</title>
-        <link
-          rel="shortcut icon"
-          href="//sf1-ttcdn-tos.pstatp.com/obj/ttfe/2020-01-06/lab-speech/static/favicon.ico"
-          type="image/x-icon"
-        />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
       </Helmet>
       <RouteContext.Provider
         value={{ ...getContext(), CSSLayoutType: isTopMenu ? 'Fixed' : 'Fluid' }}

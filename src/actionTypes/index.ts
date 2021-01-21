@@ -6,7 +6,7 @@ import * as user from './user';
 /**
  * Dva Effect 执行后的返回值接口(如果有的话)
  */
-export interface IDispatchReturn {
+export interface IDispatchReturnExtra {
   succeeded?: boolean;
   errorMessage?: string;
   traceId?: Key;

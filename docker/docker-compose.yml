@@ -1,7 +1,7 @@
 version: "3.7"
 
 services:
-  proxy-novel-platform-test:
+  proxy-platform-name:
     image: nginx
     restart: always
     ports:

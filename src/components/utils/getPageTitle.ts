@@ -1,9 +1,9 @@
 import memoizeOne from 'memoize-one';
 import { isEqual } from 'lodash-es';
 import pathToRegexp from 'path-to-regexp';
-import { BreadcrumbNameMapType, IMenuDataItem } from '@/components/typings';
 import defaultSettings from '@/defaultSettings';
-import { urlToList } from '@/components/utils/pathTools';
+import { BreadcrumbNameMapType, IMenuDataItem } from '../typings';
+import { urlToList } from './pathTools';
 
 const { menu, title } = defaultSettings;
 

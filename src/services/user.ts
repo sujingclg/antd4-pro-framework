@@ -1,6 +1,6 @@
 import axiosInstance from '@/utils/axiosInstance';
 import { ICurrentUser } from '@/components/typings';
-import { IBaseResponse, IBackendUserItem } from '@/data';
+import { IBaseResponse, IBackendUserItem } from '@/typings/interface';
 
 export async function queryCurrentUser(): Promise<ICurrentUser | void> {
   try {

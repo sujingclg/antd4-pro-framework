@@ -1,7 +1,7 @@
-import { BreadcrumbNameMapType, IMenuDataItem, Route } from '@/components/typings';
-import defaultSettings from '@/defaultSettings';
 import memoizeOne from 'memoize-one';
 import { isEqual } from 'lodash-es';
+import defaultSettings from '@/defaultSettings';
+import { BreadcrumbNameMapType, IMenuDataItem, Route } from '../typings';
 import Authorized from './Authorized';
 
 const { check } = Authorized;

@@ -1,5 +1,5 @@
-import AuthorizeRenderer from '@/components/Authorized';
 import defaultSettings from '@/defaultSettings';
+import AuthorizeRenderer from '../Authorized';
 
 export const authorityKey = `${defaultSettings.appName}-authority`;
 
